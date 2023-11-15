@@ -22,7 +22,7 @@ if (config.use_env_variable) {
 try{
   console.log("conexao efetuada com Sucesso!");
 }catch(error){
-    console.error("a api nao de conectou com o banco de dado", error);
+    console.error("Erro!!!, a api nao de conectou com o banco de dado", error);
 }
 
 

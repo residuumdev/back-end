@@ -3,7 +3,7 @@
   "info": {
     "version": "3.0.3",
     "title": "API residuum, sistema de gestao",
-    "description": "documentacao automatica gerada pelo swagger autogen"
+    "description": "Documentacao automatica gerada pelo swagger autogen"
   },
   "host": "localhost:8080",
   "basePath": "/",
@@ -20,140 +20,24 @@
     "application/x-www-form-urlencoded"
   ],
   "paths": {
-    "/total_clientes": {
-      "get": {
-        "tags": [
-          "Clientes"
-        ],
-        "description": "cria cliente",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "novo cliente = {  in: body,  description: informacoes,  required: true,  schema: {$ref: #/definitions/request_empresa}  }",
-            "in": "body",
-            "description": "informacoes",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/request_empresa"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "201": {
-            "in": "body",
-            "descrition": "cliente resgistardo com sucesso",
-            "schema": {
-              "$ref": "#/definitions/request_empresa"
-            },
-            "description": "Created"
-          }
-        }
-      }
-    },
     "/listar": {
       "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
+        "tags": [
+          "Listar"
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/login": {
-      "post": {
-        "description": "",
+        "description": "buscar cliente",
         "parameters": [
           {
-            "name": "body",
+            "name": "get_cliente = {   in: body,   description: information,   required: true,   schema: {$ref: #/definitions/get_cliente}   }",
             "in": "body",
+            "description": "information",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "senha": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/get_cliente"
             }
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/cadastrar": {
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/Deletar": {
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        }
-      }
-    },
-    "/editar": {
-      "put": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
           "201": {
             "description": "Created"
           }
@@ -162,34 +46,62 @@
     }
   },
   "definitions": {
-    "request_empresa": {
+    "get_cliente": {
+      "type": "object",
+      "properties": {}
+    },
+    "loginUsuario": {
       "type": "object",
       "properties": {
-        "objeto_login": {
-          "type": "object",
-          "properties": {
-            "razao_social": {
-              "type": "string",
-              "example": "razão social"
-            },
-            "numero_cnpj": {
-              "type": "string",
-              "example": "21255002000100"
-            },
-            "inscricao_estadual": {
-              "type": "string",
-              "example": "123456789"
-            }
-          },
-          "required": [
-            "razao_social",
-            "numero_cnpj",
-            "inscricao_estadual"
-          ]
+        "usuario_email": {
+          "type": "string",
+          "example": "emers72"
+        },
+        "usuario_senha": {
+          "type": "string",
+          "example": "12345"
         }
       },
       "required": [
-        "objeto_login"
+        "usuario_email",
+        "usuario_senha"
+      ]
+    },
+    "cadastro_usuario": {
+      "type": "object",
+      "properties": {
+        "usuario_nome": {
+          "type": "string",
+          "example": "String"
+        },
+        "usuario_senha": {
+          "type": "string",
+          "example": "String"
+        },
+        "usuario_email": {
+          "type": "string",
+          "example": "String"
+        },
+        "usuario_categoria": {
+          "type": "string",
+          "example": "integer"
+        },
+        "usuario_empresa": {
+          "type": "string",
+          "example": "string"
+        },
+        "empresa_nome": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "usuario_nome",
+        "usuario_senha",
+        "usuario_email",
+        "usuario_categoria",
+        "usuario_empresa",
+        "empresa_nome"
       ]
     }
   }

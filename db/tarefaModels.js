@@ -1,90 +1,70 @@
 const db = require("./models/index");
 const bcrypt = require('bcryptjs');
+const usuario = require("./models/usuario");
 
-exports.pegatodos = async() => {
-    const condominios = await db.dados_condominios.findAll();
-    const empresas = await db.dados_empresas.findAll();
-    const residencias = await db.dados_residencias.findAll();
-    const users = await db.user.findAll({attributes:['categoria','matricula','nome']});
-
-    const dadosRes = {
-      data:{
-        code:200,
-        condominios,
-        empresas,
-        residencias,
-        users
-      }
-    }
-  return dadosRes;
-}
-
-exports.validarUsuario = async(dados)=>{
-  const user = await db.user.findOne({
-    attributes:['nome','matricula','senha'],
+exports.verificaUsuario = async(dados)=>{
+  const user = await db.usuario.findOne({
+    attributes:['usuario_nome','usuario_matricula','usuario_senha'],
     where:{
-        matricula : dados.matricula
+        usuario_nome: dados.usuario_nome,
+        usuario_matricula : dados.usuario_matricula,
     }
   });
+  
   if(user){
     return user;
   }else{
     return false;
   }
   
+  
+}
+exports.criarUsuario = async(dados)=>{
+  dados.usuario_senha = await bcrypt.hash(dados.usuario_senha, 8);
+
+    const criarEmpresa = await db.empresa.create({
+      empresa_nome: dados.empresa_nome
+    });
+    
+    const criarUsuario = await db.usuario.create({
+        usuario_nome: dados.usuario_nome,
+        usuario_senha: dados.usuario_senha,
+        usuario_email: dados.usuario_email,
+        usuario_categoria: dados.usuario_categoria,
+        usuario_empresa: dados.usuario_empresa,
+        empresa_id: criarEmpresa.id
+    });
+    
+
+    try{
+      return true;
+    }catch{
+      return false;
+    }
+      
 }
 
-exports.verificarCliente = async(dados)=>{
-  if (dados.categoria == 'empresa'){
-    const user = await db.dados_empresas.findOne({
-      attributes:['cnpj'],
-      where:{
-          cnpj : dados.cnpj
-      }
-    });
-    if (user){
-        return true;
-      }else{
-        return false;
-      }
-  }else if (dados.categoria == 'condominio'){
-    const user = await db.dados_condominios.findOne({
-      attributes:['cnpj'],
-      where:{
-          cnpj : dados.cnpj
-      }
-    });
-    if (user){
-        return true;
-      }else{
-        return false;
-      }
-  }else if (dados.categoria == 'residencia'){
-    const user = await db.dados_residencias.findOne({
-      attributes:['cpf'],
-      where:{
-          cpf : dados.cpf
-      }
-    });
-    if (user){
-        return true;
-      }else{
-        return false;
-      }
-  }else if (dados.categoria == 'userSystem'){
-    const user = await db.user.findOne({
-      attributes:['matricula'],
-      where:{
-          matricula : dados.matricula
-      }
-    });
-    if (user){
-        return true;
-      }else{
-        return false;
-      }
+exports.listar = async() => {
+  const data = await db.usuario.findAll({
+    include: [
+      {
+        model: db.instituicao,
+        attributes: ['id','instituicao_nome','instituicao_cnpj'],
+      },
+    ],
+    attributes: ['id','usuario_nome'],
+  });
+  try{
+    return data;
+  }catch{
+    return false;
   }
+ 
 }
+
+
+
+
 
 exports.cadastrarNoBD = async(dados)=>{
   if (dados.categoria == 'empresa'){
@@ -99,12 +79,6 @@ exports.cadastrarNoBD = async(dados)=>{
   }else if(dados.categoria == 'residencia'){
     const criar = await db.dados_residencias.create(dados);
       return criar;
-
-  }else if(dados.categoria == 'userSystem'){
-    dados.senha = await bcrypt.hash(dados.senha, 8);
-    const criar = await db.user.create(dados);
-      return criar;
-
   }
 } 
 

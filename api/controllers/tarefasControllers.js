@@ -3,8 +3,120 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
+exports.loginUsuario = async (req, res)=>{
+  // #swagger.tags = ['Login_Usuario']
+    // #swagger.description = 'loginUsuario'
 
-exports.getAll = async (req, res) => {
+    /*
+        #swagger.parameters['login usuario' = {
+            in: 'body',
+            description: 'o usuario vai logar',
+            required: true,
+            schema: {$ref: "#/definitions/loginUsuario"}
+        }]
+     */
+    
+
+  //  dados aguardados:{
+  //   usuario_email:String,
+  //   usuario_senha:String
+  // }
+  const dados = req.body;
+    const verificado = await tarefaModel.verificaUsuario(dados);
+  try{
+    if(verificado){
+      const validaSenha = await bcrypt.compare(dados.usuario_senha, verificado.usuario_senha);
+              if(validaSenha){
+                  let token = jwt.sign({id:verificado.id}, "KJHJGHJFGHGJKHLKLKJLKJKHJHK",{
+                      expiresIn: '1h'
+                  })
+                 
+                  return res.status(200).json(
+                    data={
+                      nome:verificado.usuario_nome,
+                      message:"Usuario encontrado!",
+                      code:200,
+                      token
+                  })
+              }else{
+                  return res.status(404).json(
+                    data={
+                      message:"verificar login",
+                      code:404
+                  })
+              }
+    }else{
+      return res.status(404).json(
+        data={
+          message:"verificar dados de login",
+          code:404
+      })
+    }
+
+  }
+  catch{
+    return res.status(400).json(
+      data={
+        message:"erro de servidor"
+    });
+  }
+};
+exports.cadastrarUsuario = async(req, res)=>{
+// #swagger.tags = ['Cadastro']
+    // #swagger.description = 'cadastrar um usuario no sistema'
+
+    /*
+        #swagger.parameters['cadastrar usuario' = {
+            in: 'body',
+            description: 'Aqui o usuario vai ser cadastrado',
+            required: true,
+            schema: {$ref: "#/definitions/cadastro_usuario"}
+        }]
+     */
+
+  //  dados aguardados:{
+  //   usuario_nome: String,
+  //   usuario_senha:String
+  //   usuario_email:String,
+  //   usuario_categoria:integer,
+  //   usuario_empresa:string,
+  //   empresa_nome:string
+ 
+  // }
+  const dados = req.body;
+   const verificado = await tarefaModel.verificaUsuario(dados);
+   
+        if (!verificado){
+          let criarUsuario = await tarefaModel.criarUsuario(dados);
+          try{
+            return res.status(200).json(
+              data={
+                  message:'Dados cadastrados com sucesso',
+                  code:200
+              })
+            }catch{
+              return res.status(500).send(
+                {
+                  data:{
+                  message: 'Erro no cadastro',
+                  code:500
+                  }
+                }
+                );
+            }
+        }else{  
+        return res.status(401).json(
+          data={
+              message:'verificar dados',
+              code:401
+          }
+      )
+      }
+
+};
+
+
+exports.listar = async (req, res) => {
   // #swagger.tags = ['Clientes']
     // #swagger.description = 'cria cliente'
 
@@ -23,8 +135,9 @@ exports.getAll = async (req, res) => {
             schema: { $ref: "#/definitions/request_empresa"}
         }
      */
-  const tarefa = await tarefaModel.pegatodos();
-  return res.json(tarefa);
+        const listar = await tarefaModel.listar();
+
+        return res.json(listar);
 };
 
 exports.ListarClientes = async(req, res)=>{
@@ -91,11 +204,6 @@ exports.listarEmpresas = async(req, res)=>{
   const tarefaListar = await tarefaModel.pegatodos();
 
   return res.json(tarefaListar.data.empresas);
-};
-exports.listarResidencias = async(req, res)=>{
-  const tarefaListar = await tarefaModel.pegatodos();
-
-  return res.json(tarefaListar.data.residencias);
 };
 
 exports.loginUser = async(req, res)=>{

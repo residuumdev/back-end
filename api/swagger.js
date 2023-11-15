@@ -7,7 +7,7 @@ const doc = {
     info: {
         version:"3.0.3",
         title:"API residuum, sistema de gestao",
-        description:"documentacao automatica gerada pelo swagger autogen"
+        description:"Documentacao automatica gerada pelo swagger autogen"
     },
     host:"localhost:8080",
     basePath:"/",
@@ -15,15 +15,23 @@ const doc = {
     consumes:['application/json', 'application/x-www-form-urlencoded'],
     produces:['application/json', 'application/x-www-form-urlencoded'],
     definitions: {
-      request_empresa:{
-          $objeto_login:{
-            $razao_social: "razão social",
-            $numero_cnpj: "21255002000100",
-            $inscricao_estadual: "123456789"
-          }
-          
-    }
-    }
+      get_cliente:{
+
+      },
+      loginUsuario:{
+              $usuario_email: "emers72",
+              $usuario_senha: "12345",
+      },
+      cadastro_usuario:{
+            $usuario_nome: "String",
+            $usuario_senha:"String",
+            $usuario_email:"String",
+            $usuario_categoria:"integer",
+            $usuario_empresa:"string",
+            $empresa_nome:"string",
+      }
+    },
+    
     
 }
 
