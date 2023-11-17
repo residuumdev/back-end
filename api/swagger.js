@@ -15,20 +15,21 @@ const doc = {
     consumes:['application/json', 'application/x-www-form-urlencoded'],
     produces:['application/json', 'application/x-www-form-urlencoded'],
     definitions: {
-      get_cliente:{
-
-      },
       loginUsuario:{
-              $usuario_email: "emers72",
-              $usuario_senha: "12345",
+              $usuario_nome:"emerson",
+              $usuario_matricula: "1234",
+              $usuario_senha: "1234",
       },
-      cadastro_usuario:{
-            $usuario_nome: "String",
-            $usuario_senha:"String",
-            $usuario_email:"String",
-            $usuario_categoria:"integer",
-            $usuario_empresa:"string",
-            $empresa_nome:"string",
+      cria_usuario:{
+        $usuario_nome:"emerson",
+        $usuario_matricula:"1234",
+        $usuario_senha:"1234"
+      },
+      editar_usuario:{
+        $id: "1",
+        $usuario_nome:"emerson",
+        $usuario_matricula:"1234",
+        $usuario_senha:"1234"
       }
     },
     

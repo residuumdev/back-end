@@ -3,6 +3,17 @@ const bcrypt = require('bcryptjs');
 
 
 exports.criarUsuario = async(req, res) => {
+  // #swagger.tags = ['Usuario']
+    // #swagger.description = 'rota de criar usuario'
+
+    /*
+        #swagger.parameters['usuario_criar' = {
+            in: 'body',
+            description: 'Criar um usuario no banco',
+            required: true,
+            schema: {$ref: "#/definitions/cria_usuario"}
+        }]
+     */
     try {
       const dados = req.body;
       dados.usuario_senha = await bcrypt.hash(dados.usuario_senha, 8);

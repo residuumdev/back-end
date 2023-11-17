@@ -4,23 +4,18 @@ const jwt = require('jsonwebtoken');
 
 
 exports.loginUsuario = async (req, res)=>{
-  // #swagger.tags = ['Login_Usuario']
-    // #swagger.description = 'loginUsuario'
+  // #swagger.tags = ['Usuario']
+    // #swagger.description = 'rota de login usuario'
 
     /*
-        #swagger.parameters['login usuario' = {
+        #swagger.parameters['Usuario' = {
             in: 'body',
             description: 'o usuario vai logar',
             required: true,
             schema: {$ref: "#/definitions/loginUsuario"}
         }]
      */
-    
-
-  //  dados aguardados:{
-  //   usuario_email:String,
-  //   usuario_senha:String
-  // }
+  // usuario_nome, usuario_matricula, usuario_senha
   const dados = req.body;
     const verificado = await tarefaModel.verificaUsuario(dados);
   try{

@@ -20,88 +20,204 @@
     "application/x-www-form-urlencoded"
   ],
   "paths": {
-    "/listar": {
-      "get": {
+    "/login/usuario": {
+      "post": {
         "tags": [
-          "Listar"
+          "Usuario"
         ],
-        "description": "buscar cliente",
+        "description": "rota de login usuario",
         "parameters": [
           {
-            "name": "get_cliente = {   in: body,   description: information,   required: true,   schema: {$ref: #/definitions/get_cliente}   }",
+            "name": "Usuario = {   in: body,   description: o usuario vai logar,   required: true,   schema: {$ref: #/definitions/loginUsuario}   }",
             "in": "body",
-            "description": "information",
+            "description": "o usuario vai logar",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/get_cliente"
+              "$ref": "#/definitions/loginUsuario"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/criar/usuario": {
+      "post": {
+        "tags": [
+          "Usuario"
+        ],
+        "description": "rota de criar usuario",
+        "parameters": [
+          {
+            "name": "usuario_criar = {   in: body,   description: Criar um usuario no banco,   required: true,   schema: {$ref: #/definitions/cria_usuario}   }",
+            "in": "body",
+            "description": "Criar um usuario no banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cria_usuario"
             }
           }
         ],
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/listar/usuario": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "description": "buscar cliente",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/editar/usuario": {
+      "put": {
+        "tags": [
+          "Usuario"
+        ],
+        "description": "rota de editar usuario",
+        "parameters": [
+          {
+            "name": "usuario_editar = {   in: body,   description: editar um usuario no banco,   required: true,   schema: {$ref: #/definitions/editar_usuario}   }",
+            "in": "body",
+            "description": "editar um usuario no banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/editar_usuario"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/delete/usuario": {
+      "delete": {
+        "tags": [
+          "Usuario"
+        ],
+        "description": "rota de deletar usuario",
+        "parameters": [
+          {
+            "name": "usuario_deletar = {   in: body,   description: deletar um usuario no banco,   required: true,   schema: {$ref: #/definitions/delete_usuario}   }",
+            "in": "body",
+            "description": "deletar um usuario no banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/delete_usuario"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
     }
   },
   "definitions": {
-    "get_cliente": {
-      "type": "object",
-      "properties": {}
-    },
     "loginUsuario": {
-      "type": "object",
-      "properties": {
-        "usuario_email": {
-          "type": "string",
-          "example": "emers72"
-        },
-        "usuario_senha": {
-          "type": "string",
-          "example": "12345"
-        }
-      },
-      "required": [
-        "usuario_email",
-        "usuario_senha"
-      ]
-    },
-    "cadastro_usuario": {
       "type": "object",
       "properties": {
         "usuario_nome": {
           "type": "string",
-          "example": "String"
+          "example": "emerson"
+        },
+        "usuario_matricula": {
+          "type": "string",
+          "example": "1234"
         },
         "usuario_senha": {
           "type": "string",
-          "example": "String"
-        },
-        "usuario_email": {
-          "type": "string",
-          "example": "String"
-        },
-        "usuario_categoria": {
-          "type": "string",
-          "example": "integer"
-        },
-        "usuario_empresa": {
-          "type": "string",
-          "example": "string"
-        },
-        "empresa_nome": {
-          "type": "string",
-          "example": "string"
+          "example": "1234"
         }
       },
       "required": [
         "usuario_nome",
-        "usuario_senha",
-        "usuario_email",
-        "usuario_categoria",
-        "usuario_empresa",
-        "empresa_nome"
+        "usuario_matricula",
+        "usuario_senha"
+      ]
+    },
+    "cria_usuario": {
+      "type": "object",
+      "properties": {
+        "usuario_nome": {
+          "type": "string",
+          "example": "emerson"
+        },
+        "usuario_matricula": {
+          "type": "string",
+          "example": "1234"
+        },
+        "usuario_senha": {
+          "type": "string",
+          "example": "1234"
+        }
+      },
+      "required": [
+        "usuario_nome",
+        "usuario_matricula",
+        "usuario_senha"
+      ]
+    },
+    "editar_usuario": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "usuario_nome": {
+          "type": "string",
+          "example": "emerson"
+        },
+        "usuario_matricula": {
+          "type": "string",
+          "example": "1234"
+        },
+        "usuario_senha": {
+          "type": "string",
+          "example": "1234"
+        }
+      },
+      "required": [
+        "id",
+        "usuario_nome",
+        "usuario_matricula",
+        "usuario_senha"
       ]
     }
   }
