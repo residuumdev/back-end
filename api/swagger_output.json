@@ -20,56 +20,26 @@
     "application/x-www-form-urlencoded"
   ],
   "paths": {
-    "/login/usuario": {
+    "/cadastrar/residuo": {
       "post": {
         "tags": [
           "Usuario"
         ],
-        "description": "rota de login usuario",
+        "description": "cadastrar o residuo",
         "parameters": [
           {
-            "name": "Usuario = {   in: body,   description: o usuario vai logar,   required: true,   schema: {$ref: #/definitions/loginUsuario}   }",
+            "name": "cadastrar_residuo = {   in: body,   description: cadastrar um ou mais residuo no banco,   required: true,   schema: {$ref: #/definitions/cadastrar_residuo}   }",
             "in": "body",
-            "description": "o usuario vai logar",
+            "description": "cadastrar um ou mais residuo no banco",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/loginUsuario"
+              "$ref": "#/definitions/cadastrar_residuo"
             }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        }
-      }
-    },
-    "/criar/usuario": {
-      "post": {
-        "tags": [
-          "Usuario"
-        ],
-        "description": "rota de criar usuario",
-        "parameters": [
-          {
-            "name": "usuario_criar = {   in: body,   description: Criar um usuario no banco,   required: true,   schema: {$ref: #/definitions/cria_usuario}   }",
-            "in": "body",
-            "description": "Criar um usuario no banco",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/cria_usuario"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
           },
           "500": {
             "description": "Internal Server Error"
@@ -77,15 +47,15 @@
         }
       }
     },
-    "/listar/usuario": {
+    "/listar/residuo": {
       "get": {
         "tags": [
           "Usuario"
         ],
-        "description": "buscar cliente",
+        "description": "buscar lista de residuos",
         "responses": {
-          "201": {
-            "description": "Created"
+          "200": {
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -93,20 +63,20 @@
         }
       }
     },
-    "/editar/usuario": {
+    "/atualizar/residuo": {
       "put": {
         "tags": [
           "Usuario"
         ],
-        "description": "rota de editar usuario",
+        "description": "atualizar dados de residuo",
         "parameters": [
           {
-            "name": "usuario_editar = {   in: body,   description: editar um usuario no banco,   required: true,   schema: {$ref: #/definitions/editar_usuario}   }",
+            "name": "atualizar residuo = {   in: body,   description: editar um usuario no banco,   required: true,   schema: {$ref: #/definitions/atualizarResisuo}   }",
             "in": "body",
             "description": "editar um usuario no banco",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/editar_usuario"
+              "$ref": "#/definitions/atualizarResisuo"
             }
           }
         ],
@@ -116,108 +86,79 @@
           },
           "201": {
             "description": "Created"
-          }
-        }
-      }
-    },
-    "/delete/usuario": {
-      "delete": {
-        "tags": [
-          "Usuario"
-        ],
-        "description": "rota de deletar usuario",
-        "parameters": [
-          {
-            "name": "usuario_deletar = {   in: body,   description: deletar um usuario no banco,   required: true,   schema: {$ref: #/definitions/delete_usuario}   }",
-            "in": "body",
-            "description": "deletar um usuario no banco",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/delete_usuario"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
           }
         }
       }
     }
   },
   "definitions": {
-    "loginUsuario": {
+    "cadastrar_residuo": {
       "type": "object",
       "properties": {
-        "usuario_nome": {
-          "type": "string",
-          "example": "emerson"
+        "papel": {
+          "type": "number",
+          "example": 10.5
         },
-        "usuario_matricula": {
-          "type": "string",
-          "example": "1234"
+        "metal": {
+          "type": "number",
+          "example": 10.5
         },
-        "usuario_senha": {
-          "type": "string",
-          "example": "1234"
+        "vidro": {
+          "type": "number",
+          "example": 10.5
+        },
+        "organico": {
+          "type": "number",
+          "example": 10.5
+        },
+        "plastico": {
+          "type": "number",
+          "example": 10.5
         }
       },
       "required": [
-        "usuario_nome",
-        "usuario_matricula",
-        "usuario_senha"
+        "papel",
+        "metal",
+        "vidro",
+        "organico",
+        "plastico"
       ]
     },
-    "cria_usuario": {
-      "type": "object",
-      "properties": {
-        "usuario_nome": {
-          "type": "string",
-          "example": "emerson"
-        },
-        "usuario_matricula": {
-          "type": "string",
-          "example": "1234"
-        },
-        "usuario_senha": {
-          "type": "string",
-          "example": "1234"
-        }
-      },
-      "required": [
-        "usuario_nome",
-        "usuario_matricula",
-        "usuario_senha"
-      ]
-    },
-    "editar_usuario": {
+    "atualizarResisuo": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string",
-          "example": "1"
+          "type": "number",
+          "example": 1
         },
-        "usuario_nome": {
-          "type": "string",
-          "example": "emerson"
+        "papel": {
+          "type": "number",
+          "example": 10
         },
-        "usuario_matricula": {
-          "type": "string",
-          "example": "1234"
+        "metal": {
+          "type": "number",
+          "example": 10
         },
-        "usuario_senha": {
-          "type": "string",
-          "example": "1234"
+        "vidro": {
+          "type": "number",
+          "example": 10
+        },
+        "organico": {
+          "type": "number",
+          "example": 10
+        },
+        "plastico": {
+          "type": "number",
+          "example": 10
         }
       },
       "required": [
         "id",
-        "usuario_nome",
-        "usuario_matricula",
-        "usuario_senha"
+        "papel",
+        "metal",
+        "vidro",
+        "organico",
+        "plastico"
       ]
     }
   }

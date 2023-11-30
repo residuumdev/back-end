@@ -1,6 +1,4 @@
 const db = require("./models/index");
-const bcrypt = require("bcryptjs");
-const usuario = require("./models/usuario");
 
 exports.verificaUsuario = async (dados) => {
   const user = await db.usuario.findOne({
@@ -17,34 +15,25 @@ exports.verificaUsuario = async (dados) => {
     return false;
   }
 };
-exports.listar = async () => {
-  const data = await db.usuario.findAll({
-    include: [
-      {
-        model: db.instituicao,
-        attributes: ["id", "instituicao_nome", "instituicao_cnpj"],
-      },
-    ],
-    attributes: ["id", "usuario_nome"],
-  });
+exports.listarResiduo = async () => {
   try {
-    return data;
+    const listar = await db.residuo.findAll();
+    return listar;
   } catch {
     return false;
   }
 };
 
 exports.verificaDados = async (id) => {
-  const user = await db.usuario.findOne({
-    attributes: ["id"],
-    where: {
-      id: id,
-    },
-  });
-
-  if (user) {
-    return true;
-  } else {
+  try{
+    const user = await db.residuo.findOne({
+      attributes: ["id"],
+      where: {
+        id: id,
+      },
+    });
+    return user;
+  }catch{
     return false;
   }
 };
@@ -67,25 +56,29 @@ exports.deletarUsuario = async (id) => {
 };
 
 exports.UpDate = async (dados) => {
-  const update = await db.usuario.findOne({
-    where: {
-      id: dados.id,
-    },
-  });
-  if (dados.usuario_nome) {
-    update.usuario_nome = dados.usuario_nome;
-  }
-  if (dados.usuario_matricula) {
-    update.usuario_matricula = dados.usuario_matricula;
-  }
-  if (dados.usuario_senha) {
-    dados.usuario_senha = await bcrypt.hash(dados.usuario_senha, 8);
-    update.usuario_senha = dados.usuario_senha;
-  } else {
-    return false;
-  }
-  const Salvo = await update.save();
+  
   try {
+    const update = await db.residuo.findOne({
+      where: {
+        id: dados.id,
+      },
+    });
+    if (dados.papel) {
+      update.papel = dados.papel;
+    }
+    if (dados.metal) {
+      update.metal = dados.metal;
+    }
+    if (dados.vidro) {
+      update.vidro = dados.vidro;
+    }
+    if (dados.organico) {
+      update.organico = dados.organico;
+    }
+    if (dados.plastico) {
+      update.plastico = dados.plastico;
+    }
+    const Salvo = await update.save();
     return true;
   } catch {
     return false;

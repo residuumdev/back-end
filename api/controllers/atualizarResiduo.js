@@ -1,15 +1,15 @@
 const tarefaModel = require("../../db/tarefaModels");
 
-exports.editarUsuario = async (req, res) => {
+exports.AtualizarResiduo = async (req, res) => {
   // #swagger.tags = ['Usuario']
-  // #swagger.description = 'rota de editar usuario'
+  // #swagger.description = 'atualizar dados de residuo'
 
   /*
-        #swagger.parameters['usuario_editar' = {
+        #swagger.parameters['atualizar residuo' = {
             in: 'body',
             description: 'editar um usuario no banco',
             required: true,
-            schema: {$ref: "#/definitions/editar_usuario"}
+            schema: {$ref: "#/definitions/atualizarResisuo"}
         }]
      */
   const dados = req.body;
