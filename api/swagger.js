@@ -29,8 +29,12 @@ const doc = {
       $vidro: 10.0,
       $organico:10.0,
       $plastico:10.0
-    }
+    },
+    delete_residuo:{
+      $id:10
+    },
   },
+  
 };
 
 swaggerAutogen(outpuFile, endpointsFile, doc).then(() => {

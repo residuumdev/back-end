@@ -89,6 +89,33 @@
           }
         }
       }
+    },
+    "/delete/residuo": {
+      "delete": {
+        "tags": [
+          "Usuario"
+        ],
+        "description": "rota de deletar residuo",
+        "parameters": [
+          {
+            "name": "delete residuo = {   in: body,   description: deletar um residuo no banco,   required: true,   schema: {$ref: #/definitions/delete_residuo}   }",
+            "in": "body",
+            "description": "deletar um residuo no banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/delete_residuo"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -159,6 +186,18 @@
         "vidro",
         "organico",
         "plastico"
+      ]
+    },
+    "delete_residuo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 10
+        }
+      },
+      "required": [
+        "id"
       ]
     }
   }
