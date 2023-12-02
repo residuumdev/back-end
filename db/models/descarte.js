@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   descarte.init({
     nome: DataTypes.STRING,
     telefone: DataTypes.STRING,
-    tipo_residuo: DataTypes.STRING
+    tipo_residuo: DataTypes.STRING,
+    palpite: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'descarte',

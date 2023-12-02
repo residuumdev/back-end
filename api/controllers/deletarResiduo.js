@@ -2,7 +2,7 @@ const db = require('../../db/models/index');
 const tarefaModel = require("../../db/tarefaModels");
 
 exports.DeletarResiduo = async (req, res) => {
-  // #swagger.tags = ['Usuario']
+  // #swagger.tags = ['Admin']
   // #swagger.description = 'rota de deletar residuo'
 
   /*

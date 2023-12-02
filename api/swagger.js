@@ -29,6 +29,12 @@ const doc = {
     delete_residuo:{
       $id:10
     },
+    Descarte_residuo:{
+      $nome:"emerson",
+      $telefone:"92922222222",
+      $tipo_residuo:"plastico",
+      $palpite:12
+    },
   },
   
 };

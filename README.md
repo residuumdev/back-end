@@ -39,7 +39,7 @@ TRABALHANDO COM VARIAVEIS DE AMBIENTE
     npx sequelize-cli model:generate --name coleta_peso --attributes peso_em_kg:float,valor:float,data_coleta:date,tipo_residuo:string
 
 # CRIAR A MIGRATION descarte
-    npx sequelize-cli model:generate --name descarte --attributes nome:string,telefone:string,tipo_residuo:string
+    npx sequelize-cli model:generate --name descarte --attributes nome:string,telefone:string,tipo_residuo:string,palpite:integer
   
 # EXECUTAR A MIGRATION
  npx sequelize-cli db:migrate

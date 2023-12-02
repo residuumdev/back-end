@@ -1,29 +1,24 @@
 const db = require("../../db/models/index");
 
-exports.cadastrarResiduo = async (req, res) => {
-  // #swagger.tags = ['Admin']
+exports.DescarteResiduo = async (req, res) => {
+  // #swagger.tags = ['Participante']
   // #swagger.description = 'cadastrar o residuo'
 
   /*
-        #swagger.parameters['cadastrar_residuo' = {
+        #swagger.parameters['Descarte_residuo' = {
             in: 'body',
             description: 'cadastrar um ou mais residuo no banco',
             required: true,
-            schema: {$ref: "#/definitions/cadastrar_residuo"}
+            schema: {$ref: "#/definitions/Descarte_residuo"}
         }]
      */
   try {
     const dados = req.body;
-    const cadastrar = await db.coleta_peso.create({
-      peso_em_kg: dados.peso_em_kg,
-      valor: dados.valor,
-      data_coleta: new Date(),
-      tipo_residuo: dados.tipo_residuo
-    });
+    const cadastrar = await db.descarte.create(dados);
 
     res.status(200).json(
       data={
-        mensagem:'Resíduo Cadastrado com sucesso!',
+        mensagem:'Obrigado '+dados.nome+' por ajuda o planeta',
         code:200
       }
     );
