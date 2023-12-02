@@ -7,9 +7,9 @@ const atualizarResisuo = require('./controllers/atualizarResiduo');
 const deleteResisuo = require('./controllers/deletarResiduo');
 
 
-router.post('/cadastrar/residuo', cadastrarResiduo.cadastrarResiduo);
-router.get('/listar/residuo', listarResiduo.ListarResiduo);
-router.put('/atualizar/residuo', atualizarResisuo.AtualizarResiduo);
-router.delete('/delete/residuo', deleteResisuo.DeletarResiduo);
+router.post('/cadastrar/coleta_peso', cadastrarResiduo.cadastrarResiduo);
+router.get('/listar/coleta_peso', listarResiduo.ListarResiduo);
+router.put('/atualizar/coleta_peso', atualizarResisuo.AtualizarResiduo);
+router.delete('/delete/coleta_peso', deleteResisuo.DeletarResiduo);
 
 module.exports = router;

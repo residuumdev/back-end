@@ -16,19 +16,15 @@ const doc = {
   produces: ["application/json", "application/x-www-form-urlencoded"],
   definitions: {
     cadastrar_residuo: {
-      $papel: 10.5,
-      $metal: 10.5,
-      $vidro: 10.5,
-      $organico:10.5,
-      $plastico:10.5
+      $peso_em_kg:10.5,
+      $valor:25.5,
+      $tipo_residuo:"plastico"
     },
-    atualizarResisuo:{
+    atualizar_coleta_peso:{
       $id:1,
-      $papel: 10.0,
-      $metal: 10.0,
-      $vidro: 10.0,
-      $organico:10.0,
-      $plastico:10.0
+      $peso_em_kg: 10.0,
+      $valor: 10.0,
+      $tipo_residuo: 10.0
     },
     delete_residuo:{
       $id:10

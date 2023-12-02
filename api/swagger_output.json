@@ -20,7 +20,7 @@
     "application/x-www-form-urlencoded"
   ],
   "paths": {
-    "/cadastrar/residuo": {
+    "/cadastrar/coleta_peso": {
       "post": {
         "tags": [
           "Usuario"
@@ -47,7 +47,7 @@
         }
       }
     },
-    "/listar/residuo": {
+    "/listar/coleta_peso": {
       "get": {
         "tags": [
           "Usuario"
@@ -63,7 +63,7 @@
         }
       }
     },
-    "/atualizar/residuo": {
+    "/atualizar/coleta_peso": {
       "put": {
         "tags": [
           "Usuario"
@@ -71,12 +71,12 @@
         "description": "atualizar dados de residuo",
         "parameters": [
           {
-            "name": "atualizar residuo = {   in: body,   description: editar um usuario no banco,   required: true,   schema: {$ref: #/definitions/atualizarResisuo}   }",
+            "name": "atualizar residuo = {   in: body,   description: editar um usuario no banco,   required: true,   schema: {$ref: #/definitions/atualizar_coleta_peso}   }",
             "in": "body",
             "description": "editar um usuario no banco",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/atualizarResisuo"
+              "$ref": "#/definitions/atualizar_coleta_peso"
             }
           }
         ],
@@ -86,11 +86,14 @@
           },
           "201": {
             "description": "Created"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
     },
-    "/delete/residuo": {
+    "/delete/coleta_peso": {
       "delete": {
         "tags": [
           "Usuario"
@@ -122,70 +125,50 @@
     "cadastrar_residuo": {
       "type": "object",
       "properties": {
-        "papel": {
+        "peso_em_kg": {
           "type": "number",
           "example": 10.5
         },
-        "metal": {
+        "valor": {
           "type": "number",
-          "example": 10.5
+          "example": 25.5
         },
-        "vidro": {
-          "type": "number",
-          "example": 10.5
-        },
-        "organico": {
-          "type": "number",
-          "example": 10.5
-        },
-        "plastico": {
-          "type": "number",
-          "example": 10.5
+        "tipo_residuo": {
+          "type": "string",
+          "example": "plastico"
         }
       },
       "required": [
-        "papel",
-        "metal",
-        "vidro",
-        "organico",
-        "plastico"
+        "peso_em_kg",
+        "valor",
+        "tipo_residuo"
       ]
     },
-    "atualizarResisuo": {
+    "atualizar_coleta_peso": {
       "type": "object",
       "properties": {
         "id": {
           "type": "number",
           "example": 1
         },
-        "papel": {
+        "peso_em_kg": {
           "type": "number",
           "example": 10
         },
-        "metal": {
+        "valor": {
           "type": "number",
           "example": 10
         },
-        "vidro": {
-          "type": "number",
-          "example": 10
-        },
-        "organico": {
-          "type": "number",
-          "example": 10
-        },
-        "plastico": {
+        "tipo_residuo": {
           "type": "number",
           "example": 10
         }
       },
       "required": [
         "id",
-        "papel",
-        "metal",
-        "vidro",
-        "organico",
-        "plastico"
+        "peso_em_kg",
+        "valor",
+        "tipo_residuo"
       ]
     },
     "delete_residuo": {

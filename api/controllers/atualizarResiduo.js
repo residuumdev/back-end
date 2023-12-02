@@ -9,11 +9,11 @@ exports.AtualizarResiduo = async (req, res) => {
             in: 'body',
             description: 'editar um usuario no banco',
             required: true,
-            schema: {$ref: "#/definitions/atualizarResisuo"}
+            schema: {$ref: "#/definitions/atualizar_coleta_peso"}
         }]
      */
   const dados = req.body;
-  // id, usuario_nome, usuario_matricula, usuario senha
+  
   const validar = await tarefaModel.verificaDados(dados.id);
   if (validar) {
     const editar = await tarefaModel.UpDate(dados);
@@ -21,7 +21,7 @@ exports.AtualizarResiduo = async (req, res) => {
     if (editar) {
       return res.status(200).json(
         (data = {
-          message: "dados salvo com sucesso",
+          editar,
           code: 200,
         })
       );
@@ -34,10 +34,10 @@ exports.AtualizarResiduo = async (req, res) => {
       );
     }
   } else {
-    return res.status(201).json(
+    return res.status(404).json(
       (data = {
-        message: "erro de dados",
-        code: 201,
+        message: "dados nao encontrado",
+        code: 404,
       })
     );
   }
