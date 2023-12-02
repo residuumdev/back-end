@@ -14,7 +14,12 @@ exports.cadastrarResiduo = async (req, res) => {
      */
   try {
     const dados = req.body;
-    const cadastrar = await db.residuo.create(dados);
+    const cadastrar = await db.coleta_peso.create({
+      peso_em_kg: dados.peso_em_kg,
+      valor: dados.valor,
+      data_coleta: new Date(),
+      tipo_residuo: dados.tipo_residuo
+    });
 
     res.status(200).json(
       data={
@@ -23,6 +28,7 @@ exports.cadastrarResiduo = async (req, res) => {
       }
     );
   } catch (error) {
+    console.log(error)
     res.status(500).json(data={
       mensagem:'erro no cadastro',
       code:500
