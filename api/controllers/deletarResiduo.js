@@ -2,7 +2,7 @@ const db = require('../../db/models/index');
 const tarefaModel = require("../../db/tarefaModels");
 
 exports.DeletarResiduo = async (req, res) => {
-  // #swagger.tags = ['Usuario']
+  // #swagger.tags = ['Admin']
   // #swagger.description = 'rota de deletar residuo'
 
   /*
@@ -15,7 +15,7 @@ exports.DeletarResiduo = async (req, res) => {
      */
   try{
     const id = req.body.id;
-    const user = await db.residuo.destroy({
+    const user = await db.coleta_peso.destroy({
       where: {
         id: id,
       },
@@ -23,14 +23,14 @@ exports.DeletarResiduo = async (req, res) => {
     if (!user){
       return res.status(404).json(
         (data = {
-          message: "cliente nao encontrado!",
+          message: "dados nao encontrado!",
           code: 404,
         })
       );
     }
     return res.status(500).json(
       (data = {
-        message: "cliente excluido com sucesso",
+        message: "dados excluido com sucesso",
         code: 500,
       })
     );

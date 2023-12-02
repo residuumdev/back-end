@@ -2,27 +2,24 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('residuos', {
+    await queryInterface.createTable('coleta_pesos', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      papel: {
+      peso_em_kg: {
         type: Sequelize.FLOAT
       },
-      metal: {
+      valor: {
         type: Sequelize.FLOAT
       },
-      vidro: {
-        type: Sequelize.FLOAT
+      data_coleta: {
+        type: Sequelize.DATE
       },
-      organico: {
-        type: Sequelize.FLOAT
-      },
-      plastico: {
-        type: Sequelize.FLOAT
+      tipo_residuo: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('residuos');
+    await queryInterface.dropTable('coleta_pesos');
   }
 };

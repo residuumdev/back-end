@@ -35,14 +35,11 @@ se nao funcionar crie diretamente no ambiente do banco
 TRABALHANDO COM VARIAVEIS DE AMBIENTE
 # npm install dotenv --save
 
-# CRIAR A MIGRATION participante
-    npx sequelize-cli model:generate --name participante --attributes nomePar:string,nascimentoPar:string,celularPar:string,sexoPar:string,emailPar:string,escolaridadePar:string,matriculaPar:integer
+# CRIAR A MIGRATION coleta_peso
+    npx sequelize-cli model:generate --name coleta_peso --attributes peso_em_kg:float,valor:float,data_coleta:date,tipo_residuo:string
 
-# CRIAR A MIGRATION residuo
-    npx sequelize-cli model:generate --name residuo --attributes papel:float,metal:float,vidro:float,organico:float,plastico:float
-
-# CRIAR A MIGRATION endereco
-    npx sequelize-cli model:generate --name endereco --attributes matricula:integer,estado:string,cidade:string,bairro:string
+# CRIAR A MIGRATION descarte
+    npx sequelize-cli model:generate --name descarte --attributes nome:string,telefone:string,tipo_residuo:string,palpite:integer
   
 # EXECUTAR A MIGRATION
  npx sequelize-cli db:migrate
