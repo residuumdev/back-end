@@ -1,7 +1,7 @@
 const tarefaModel = require("../../db/tarefaModels");
 
 exports.AtualizarResiduo = async (req, res) => {
-  // #swagger.tags = ['Usuario']
+  // #swagger.tags = ['Admin']
   // #swagger.description = 'atualizar dados de residuo'
 
   /*

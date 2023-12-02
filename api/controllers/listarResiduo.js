@@ -1,7 +1,7 @@
 const tarefaModel = require("../../db/tarefaModels");
 
 exports.ListarResiduo = async (req, res) => {
-  // #swagger.tags = ['Usuario']
+  // #swagger.tags = ['Admin']
   // #swagger.description = 'buscar lista de residuos'
   
   try {

@@ -18,6 +18,9 @@ module.exports = {
       tipo_residuo: {
         type: Sequelize.STRING
       },
+      palpite: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

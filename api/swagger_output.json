@@ -23,7 +23,7 @@
     "/cadastrar/coleta_peso": {
       "post": {
         "tags": [
-          "Usuario"
+          "Admin"
         ],
         "description": "cadastrar o residuo",
         "parameters": [
@@ -50,7 +50,7 @@
     "/listar/coleta_peso": {
       "get": {
         "tags": [
-          "Usuario"
+          "Admin"
         ],
         "description": "buscar lista de residuos",
         "responses": {
@@ -66,7 +66,7 @@
     "/atualizar/coleta_peso": {
       "put": {
         "tags": [
-          "Usuario"
+          "Admin"
         ],
         "description": "atualizar dados de residuo",
         "parameters": [
@@ -96,7 +96,7 @@
     "/delete/coleta_peso": {
       "delete": {
         "tags": [
-          "Usuario"
+          "Admin"
         ],
         "description": "rota de deletar residuo",
         "parameters": [
@@ -113,6 +113,33 @@
         "responses": {
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/descarte": {
+      "post": {
+        "tags": [
+          "Participante"
+        ],
+        "description": "cadastrar o residuo",
+        "parameters": [
+          {
+            "name": "Descarte_residuo = {   in: body,   description: cadastrar um ou mais residuo no banco,   required: true,   schema: {$ref: #/definitions/Descarte_residuo}   }",
+            "in": "body",
+            "description": "cadastrar um ou mais residuo no banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Descarte_residuo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           },
           "500": {
             "description": "Internal Server Error"
@@ -181,6 +208,33 @@
       },
       "required": [
         "id"
+      ]
+    },
+    "Descarte_residuo": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "emerson"
+        },
+        "telefone": {
+          "type": "string",
+          "example": "92922222222"
+        },
+        "tipo_residuo": {
+          "type": "string",
+          "example": "plastico"
+        },
+        "palpite": {
+          "type": "number",
+          "example": 12
+        }
+      },
+      "required": [
+        "nome",
+        "telefone",
+        "tipo_residuo",
+        "palpite"
       ]
     }
   }
