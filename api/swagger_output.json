@@ -146,6 +146,25 @@
           }
         }
       }
+    },
+    "/ganhadores": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "verificacao de ganhador",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
     }
   },
   "definitions": {
