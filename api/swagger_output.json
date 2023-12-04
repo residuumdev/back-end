@@ -165,6 +165,33 @@
           }
         }
       }
+    },
+    "/Dashboard": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "description": "buscar dados de coleta",
+        "parameters": [
+          {
+            "name": "dashboard = {   in: body,   description: cadastrar um ou mais residuo no banco,   required: true,   schema: {$ref: #/definitions/dashboard}   }",
+            "in": "body",
+            "description": "cadastrar um ou mais residuo no banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dashboard"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -215,6 +242,28 @@
         "peso_em_kg",
         "valor",
         "tipo_residuo"
+      ]
+    },
+    "dashboard": {
+      "type": "object",
+      "properties": {
+        "inicio": {
+          "type": "string",
+          "example": "2023-12-03 "
+        },
+        "fim": {
+          "type": "string",
+          "example": "2023-12-06 "
+        },
+        "escolhadash": {
+          "type": "string",
+          "example": "True"
+        }
+      },
+      "required": [
+        "inicio",
+        "fim",
+        "escolhadash"
       ]
     },
     "delete_residuo": {

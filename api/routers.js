@@ -17,6 +17,6 @@ router.delete('/delete/coleta_peso', deleteResisuo.DeletarResiduo);
 router.post('/descarte', descarte.DescarteResiduo);
 router.get('/ganhadores', verificarGanhador.VerificarGanhador);
 
-router.get('/Dashboard', Dashboard.Board);
+router.post('/Dashboard', Dashboard.Board);
 
 module.exports = router;

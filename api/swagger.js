@@ -25,6 +25,12 @@ const doc = {
       $peso_em_kg: 10.0,
       $valor: 10.0,
       $tipo_residuo: 10.0
+    },    
+    dashboard:{
+      $inicio:"2023-12-03 ",
+      $fim:"2023-12-06 ",
+      $escolhadash:"True",
+
     },
     delete_residuo:{
       $id:10
