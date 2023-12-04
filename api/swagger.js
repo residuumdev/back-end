@@ -29,7 +29,7 @@ const doc = {
     dashboard:{
       $inicio:"2023-12-03 ",
       $fim:"2023-12-06 ",
-      $escolhadash:"True",
+      $data:"True",
 
     },
     delete_residuo:{
