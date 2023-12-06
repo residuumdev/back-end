@@ -24,16 +24,15 @@ exports.DescarteResiduo = async (req, res) => {
       const descarte = await db.descarte.create(dados);
       res.status(200).json(
         data={
-          mensagem:'Obrigado '+dados.nome+' por ajuda o planeta',
+          mensagem:'Obrigado por ajuda o planeta',
           code:200
         }
       );
     }else{
-      dados.palpite = 0;
       const descarte = await db.descarte.create(dados);
       res.status(201).json(
         data={
-          mensagem:'Obrigado '+dados.nome+' por ajuda o planeta. Porem, ja possui palpite no telefone cadastrado',
+          mensagem:'Obrigado por ajuda o planeta. Porem, ja possui palpite no telefone cadastrado',
           code:201
         }
       );

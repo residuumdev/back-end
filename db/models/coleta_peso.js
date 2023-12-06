@@ -15,8 +15,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   coleta_peso.init({
     peso_em_kg: DataTypes.FLOAT,
-    valor: DataTypes.FLOAT,
-    data_coleta: DataTypes.DATE,
     tipo_residuo: DataTypes.STRING
   }, {
     sequelize,
