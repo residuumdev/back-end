@@ -168,6 +168,33 @@
           }
         }
       }
+    },
+    "/gravaQuiz": {
+      "post": {
+        "tags": [
+          "Participante"
+        ],
+        "description": "cadastrar o residuo",
+        "parameters": [
+          {
+            "name": "gravar_Quizz = {   in: body,   description: cadastrar um ou mais residuo no banco,   required: true,   schema: {$ref: #/definitions/gravar_Quizz}   }",
+            "in": "body",
+            "description": "cadastrar um ou mais residuo no banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/gravar_Quizz"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -178,10 +205,6 @@
           "type": "number",
           "example": 10.5
         },
-        "valor": {
-          "type": "number",
-          "example": 25.5
-        },
         "tipo_residuo": {
           "type": "string",
           "example": "plastico"
@@ -189,7 +212,6 @@
       },
       "required": [
         "peso_em_kg",
-        "valor",
         "tipo_residuo"
       ]
     },
@@ -204,19 +226,14 @@
           "type": "number",
           "example": 10
         },
-        "valor": {
-          "type": "number",
-          "example": 10
-        },
         "tipo_residuo": {
-          "type": "number",
-          "example": 10
+          "type": "string",
+          "example": "plastico"
         }
       },
       "required": [
         "id",
         "peso_em_kg",
-        "valor",
         "tipo_residuo"
       ]
     },
@@ -235,27 +252,64 @@
     "Descarte_residuo": {
       "type": "object",
       "properties": {
+        "telefone": {
+          "type": "string",
+          "example": "92922222222"
+        },
+        "papel": {
+          "type": "number",
+          "example": 1
+        },
+        "metal": {
+          "type": "number",
+          "example": 1
+        },
+        "plastico": {
+          "type": "number",
+          "example": 1
+        },
+        "vidro": {
+          "type": "number",
+          "example": 1
+        },
+        "organico": {
+          "type": "number",
+          "example": 1
+        },
+        "nao_reciclavel": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "telefone",
+        "papel",
+        "metal",
+        "plastico",
+        "vidro",
+        "organico",
+        "nao_reciclavel"
+      ]
+    },
+    "gravar_Quizz": {
+      "type": "object",
+      "properties": {
         "nome": {
           "type": "string",
           "example": "emerson"
         },
         "telefone": {
           "type": "string",
-          "example": "92922222222"
-        },
-        "tipo_residuo": {
-          "type": "string",
-          "example": "plastico"
+          "example": "92993727982"
         },
         "palpite": {
           "type": "number",
-          "example": 12
+          "example": 356
         }
       },
       "required": [
         "nome",
         "telefone",
-        "tipo_residuo",
         "palpite"
       ]
     }

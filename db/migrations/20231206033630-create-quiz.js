@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('descartes', {
+    await queryInterface.createTable('quizzes', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,9 +13,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       telefone: {
-        type: Sequelize.STRING
-      },
-      tipo_residuo: {
         type: Sequelize.STRING
       },
       palpite: {
@@ -32,6 +29,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('descartes');
+    await queryInterface.dropTable('quizzes');
   }
 };

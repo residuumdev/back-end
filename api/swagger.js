@@ -17,24 +17,30 @@ const doc = {
   definitions: {
     cadastrar_residuo: {
       $peso_em_kg:10.5,
-      $valor:25.5,
       $tipo_residuo:"plastico"
     },
     atualizar_coleta_peso:{
       $id:1,
       $peso_em_kg: 10.0,
-      $valor: 10.0,
-      $tipo_residuo: 10.0
+      $tipo_residuo: "plastico"
     },
     delete_residuo:{
       $id:10
     },
     Descarte_residuo:{
-      $nome:"emerson",
       $telefone:"92922222222",
-      $tipo_residuo:"plastico",
-      $palpite:12
+      $papel:1,
+      $metal:1,
+      $plastico:1,
+      $vidro:1,
+      $organico:1,
+      $nao_reciclavel:1
     },
+    gravar_Quizz:{
+      $nome:"emerson",
+      $telefone:"92993727982",
+      $palpite:356
+    }
   },
   
 };
