@@ -169,6 +169,7 @@
         }
       }
     },
+
     "/gravaQuiz": {
       "post": {
         "tags": [
@@ -178,11 +179,26 @@
         "parameters": [
           {
             "name": "gravar_Quizz = {   in: body,   description: cadastrar um ou mais residuo no banco,   required: true,   schema: {$ref: #/definitions/gravar_Quizz}   }",
+
+    "/Dashboard": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "description": "buscar dados de coleta",
+        "parameters": [
+          {
+            "name": "dashboard = {   in: body,   description: cadastrar um ou mais residuo no banco,   required: true,   schema: {$ref: #/definitions/dashboard}   }",
+
             "in": "body",
             "description": "cadastrar um ou mais residuo no banco",
             "required": true,
             "schema": {
+
               "$ref": "#/definitions/gravar_Quizz"
+
+              "$ref": "#/definitions/dashboard"
+
             }
           }
         ],
@@ -190,8 +206,13 @@
           "200": {
             "description": "OK"
           },
+
           "500": {
             "description": "Internal Server Error"
+
+          "201": {
+            "description": "Created"
+
           }
         }
       }
@@ -235,6 +256,28 @@
         "id",
         "peso_em_kg",
         "tipo_residuo"
+      ]
+    },
+    "dashboard": {
+      "type": "object",
+      "properties": {
+        "inicio": {
+          "type": "string",
+          "example": "2023-12-03 "
+        },
+        "fim": {
+          "type": "string",
+          "example": "2023-12-06 "
+        },
+        "escolhadash": {
+          "type": "string",
+          "example": "True"
+        }
+      },
+      "required": [
+        "inicio",
+        "fim",
+        "escolhadash"
       ]
     },
     "delete_residuo": {
