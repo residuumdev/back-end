@@ -67,33 +67,54 @@ exports.Board = async (req, res) => {
             }
         }
     });
+    const totaleletronico = await db.coleta_peso.sum('peso_em_kg', {
+        where: {
+            tipo_residuo:"eletronico",
+            createdAt: { 
+                [Op.between]: [new Date(dados.inicio), new Date(dados.fim)]
+            }
+        }
+    });
+    const totalnaoreciclavel = await db.coleta_peso.sum('peso_em_kg', {
+        where: {
+            tipo_residuo:"nao_reciclavel",
+            createdAt: { 
+                [Op.between]: [new Date(dados.inicio), new Date(dados.fim)]
+            }
+        }
+    });
         
         
-    const total= totalPapel+totalMetal+totalVidro+totalOrganico+totalPlastico;
+    const total= totalPapel+totalMetal+totalVidro+totalOrganico+totalPlastico+totaleletronico+totalnaoreciclavel;
     console.log(total) 
     data={
-    quantPessoas:TotalPessoas,
-    total:total,
-    total_papel_kg:totalPapel,
-    total_metal_kg:totalMetal,
-    total_vidro_kg:totalVidro,
-    total_organico_kg:totalOrganico,
-    total_plastico_kg:totalPlastico
+    TotalPessoas,
+    total,
+    totalPapel,
+    totalMetal,
+    totalVidro,
+    totalOrganico,
+    totalPlastico,
+    totalnaoreciclavel,
+    totaleletronico
     }
     console.log(data) 
-    const porcentagemPapel = (totalPapel / total) * 100;
-    const porcentagemMetal = (totalMetal / total) * 100;
-    const porcentagemVidro = (totalVidro / total) * 100;
-    const porcentagemOrganico = (totalOrganico / total) * 100;
-    const porcentagemPlastico = (totalPlastico / total) * 100;
+    const porcentagem_eletronico = (totaleletronico / total) * 100;
+    const porcentagem_naoreciclavel = (totalnaoreciclavel / total) * 100;
+    const porcentagem_papel = (totalPapel / total) * 100;
+    const porcentagem_metal = (totalMetal / total) * 100;
+    const porcentagem_vidro = (totalVidro / total) * 100;
+    const porcentagem_organico = (totalOrganico / total) * 100;
+    const porcentagem_plastico = (totalPlastico / total) * 100;
     
     data_porcentagem = {
-
-        porcentagem_papel: porcentagemPapel,
-        porcentagem_metal: porcentagemMetal,
-        porcentagem_vidro: porcentagemVidro,
-        porcentagem_organico: porcentagemOrganico,
-        porcentagem_plastico: porcentagemPlastico
+        porcentagem_eletronico,
+        porcentagem_naoreciclavel,
+        porcentagem_papel,
+        porcentagem_metal,
+        porcentagem_vidro,
+        porcentagem_organico,
+        porcentagem_plastico
     }
     console.log(data_porcentagem) 
     if(!total){

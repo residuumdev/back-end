@@ -30,6 +30,9 @@ module.exports = {
       nao_reciclavel: {
         type: Sequelize.INTEGER
       },
+       eletronico: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

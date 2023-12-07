@@ -20,6 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     plastico: DataTypes.INTEGER,
     vidro: DataTypes.INTEGER,
     organico: DataTypes.INTEGER,
+    nao_reciclavel: DataTypes.INTEGER,
+    eletronico: DataTypes.INTEGER,
     nao_reciclavel: DataTypes.INTEGER
   }, {
     sequelize,
