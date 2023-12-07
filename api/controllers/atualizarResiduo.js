@@ -13,7 +13,7 @@ exports.AtualizarResiduo = async (req, res) => {
         }]
      */
   const dados = req.body;
-  
+
   const validar = await tarefaModel.verificaDados(dados.id);
   if (validar) {
     const editar = await tarefaModel.UpDate(dados);
