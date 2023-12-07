@@ -14,7 +14,7 @@ exports.DescarteResiduo = async (req, res) => {
      */
   try {
     const dados = req.body;
-    const verTelefone = await db.descarte.findOne({
+    const verTelefone = await db.quiz.findOne({
       attributes: ["telefone"],
       where: {
         telefone: dados.telefone,
