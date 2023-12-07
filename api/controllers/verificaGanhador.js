@@ -5,11 +5,11 @@ exports.VerificarGanhador = async (req, res) => {
   // #swagger.description = 'verificacao de ganhador'
   
   try {
-    const conta_total_nome = await db.descarte.count();
-    const palpite_coreto = await db.descarte.findAll({
+    const totalParticipante = await db.quiz.count();
+    const palpite_coreto = await db.quiz.findAll({
         attributes:['nome','telefone','palpite'],
         where:{
-            palpite: conta_total_nome,
+            palpite: totalParticipante,
         }
       })
       if(palpite_coreto.length < 1){
@@ -17,7 +17,7 @@ exports.VerificarGanhador = async (req, res) => {
             (data = {
               code:201,
               message: "Ninguem acertou o palpite !!!",
-              Total_de_descarte: conta_total_nome
+              Total_de_participante: totalParticipante
             })
           );
       }
@@ -25,7 +25,7 @@ exports.VerificarGanhador = async (req, res) => {
     return res.status(200).json(
       (data = {
         code:200,
-        Total_de_descarte: conta_total_nome,
+        total_Participante: totalParticipante,
         message: "Parabens Ganhador(es) !!!",
         Ganhadores: palpite_coreto
       })

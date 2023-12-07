@@ -14,12 +14,7 @@ exports.cadastrarResiduo = async (req, res) => {
      */
   try {
     const dados = req.body;
-    const cadastrar = await db.coleta_peso.create({
-      peso_em_kg: dados.peso_em_kg,
-      valor: dados.valor,
-      data_coleta: new Date(),
-      tipo_residuo: dados.tipo_residuo
-    });
+    const cadastrar = await db.coleta_peso.create(dados);
 
     res.status(200).json(
       data={
