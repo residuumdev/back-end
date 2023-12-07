@@ -11,6 +11,8 @@
     Verique documentacao Swagger na rota:
     http://localhost:8080/api-docs
 
+npm install mysql2 sequelize sequelize-cli swagger swagger-autogen dotenv cors
+
 INICIAR a CRIANCAO DO PROJETO
 # npm init
 

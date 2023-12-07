@@ -22,7 +22,17 @@ const doc = {
     atualizar_coleta_peso:{
       $id:1,
       $peso_em_kg: 10.0,
-      $tipo_residuo: "plastico"
+
+      $tipo_residuo: "plastico",
+      $valor: 10.0,
+      $tipo_residuo: 10.0,
+    },    
+    dashboard:{
+      $inicio:"2023-12-03 ",
+      $fim:"2023-12-06 ",
+      $data:"True",
+
+
     },
     delete_residuo:{
       $id:10
