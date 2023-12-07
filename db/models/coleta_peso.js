@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class coleta_peso extends Model {
     /**
@@ -13,12 +11,15 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  coleta_peso.init({
-    peso_em_kg: DataTypes.FLOAT,
-    tipo_residuo: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'coleta_peso',
-  });
+  coleta_peso.init(
+    {
+      peso_em_kg: DataTypes.FLOAT,
+      tipo_residuo: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "coleta_peso",
+    }
+  );
   return coleta_peso;
 };

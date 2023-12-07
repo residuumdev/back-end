@@ -1,49 +1,49 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('descartes', {
+    await queryInterface.createTable("descartes", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       telefone: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       papel: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       metal: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       plastico: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       vidro: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       organico: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       nao_reciclavel: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
-       eletronico: {
-        type: Sequelize.INTEGER
+      eletronico: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('descartes');
-  }
+    await queryInterface.dropTable("descartes");
+  },
 };

@@ -10,7 +10,7 @@ exports.listarResiduo = async () => {
 };
 
 exports.verificaDados = async (id) => {
-  try{
+  try {
     const user = await db.coleta_peso.findOne({
       attributes: ["id"],
       where: {
@@ -18,15 +18,14 @@ exports.verificaDados = async (id) => {
       },
     });
     return user;
-  }catch{
+  } catch {
     return false;
   }
 };
 
 exports.UpDate = async (dados) => {
-  
   try {
-    const menssagem="";
+    const menssagem = "";
     const update = await db.coleta_peso.findOne({
       where: {
         id: dados.id,
@@ -37,11 +36,11 @@ exports.UpDate = async (dados) => {
     }
     if (dados.tipo_residuo) {
       update.tipo_residuo = dados.tipo_residuo;
-    }else{
-      return {menssagem: "nada pra salvar"}
+    } else {
+      return { menssagem: "nada pra salvar" };
     }
     const Salvo = await update.save();
-    return {menssagem: "salvo com sucesso!"}
+    return { menssagem: "salvo com sucesso!" };
   } catch {
     return false;
   }
