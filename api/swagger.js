@@ -28,11 +28,9 @@ const doc = {
       $tipo_residuo: 10.0,
     },    
     dashboard:{
-      $inicio:"2023-12-03 ",
-      $fim:"2023-12-06 ",
+      $inicio:"2023-12-03",
+      $fim:"2023-12-06",
       $data:"True",
-
-
     },
     delete_residuo:{
       $id:10
@@ -50,7 +48,7 @@ const doc = {
       $nome:"emerson",
       $telefone:"92993727982",
       $palpite:356
-    }
+    },
   },
   
 };

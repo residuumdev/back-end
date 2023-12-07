@@ -1,0 +1,374 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "3.0.3",
+    "title": "API residuum, sistema de gestao",
+    "description": "Documentacao automatica gerada pelo swagger autogen"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json",
+    "application/x-www-form-urlencoded"
+  ],
+  "produces": [
+    "application/json",
+    "application/x-www-form-urlencoded"
+  ],
+  "paths": {
+    "/cadastrar/coleta_peso": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "cadastrar o residuo",
+        "parameters": [
+          {
+            "name": "cadastrar_residuo = {   in: body,   description: cadastrar um ou mais residuo no banco,   required: true,   schema: {$ref: #/definitions/cadastrar_residuo}   }",
+            "in": "body",
+            "description": "cadastrar um ou mais residuo no banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cadastrar_residuo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/listar/coleta_peso": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "buscar lista de residuos",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/atualizar/coleta_peso": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "atualizar dados de residuo",
+        "parameters": [
+          {
+            "name": "atualizar residuo = {   in: body,   description: editar um usuario no banco,   required: true,   schema: {$ref: #/definitions/atualizar_coleta_peso}   }",
+            "in": "body",
+            "description": "editar um usuario no banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/atualizar_coleta_peso"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/delete/coleta_peso": {
+      "delete": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "rota de deletar residuo",
+        "parameters": [
+          {
+            "name": "delete residuo = {   in: body,   description: deletar um residuo no banco,   required: true,   schema: {$ref: #/definitions/delete_residuo}   }",
+            "in": "body",
+            "description": "deletar um residuo no banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/delete_residuo"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/descarte": {
+      "post": {
+        "tags": [
+          "Participante"
+        ],
+        "description": "cadastrar o residuo",
+        "parameters": [
+          {
+            "name": "Descarte_residuo = {   in: body,   description: cadastrar um ou mais residuo no banco,   required: true,   schema: {$ref: #/definitions/Descarte_residuo}   }",
+            "in": "body",
+            "description": "cadastrar um ou mais residuo no banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Descarte_residuo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ganhadores": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "verificacao de ganhador",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/gravaQuiz": {
+      "post": {
+        "tags": [
+          "Participante"
+        ],
+        "description": "cadastrar o residuo",
+        "parameters": [
+          {
+            "name": "gravar_Quizz = {   in: body,   description: cadastrar um ou mais residuo no banco,   required: true,   schema: {$ref: #/definitions/gravar_Quizz}   }",
+            "in": "body",
+            "description": "cadastrar um ou mais residuo no banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/gravar_Quizz"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/Dashboard": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "description": "buscar dados de coleta",
+        "parameters": [
+          {
+            "name": "dashboard = {   in: body,   description: cadastrar um ou mais residuo no banco,   required: true,   schema: {$ref: #/definitions/dashboard}   }",
+            "in": "body",
+            "description": "cadastrar um ou mais residuo no banco",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dashboard"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "cadastrar_residuo": {
+      "type": "object",
+      "properties": {
+        "peso_em_kg": {
+          "type": "number",
+          "example": 10.5
+        },
+        "tipo_residuo": {
+          "type": "string",
+          "example": "plastico"
+        }
+      },
+      "required": [
+        "peso_em_kg",
+        "tipo_residuo"
+      ]
+    },
+    "atualizar_coleta_peso": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "peso_em_kg": {
+          "type": "number",
+          "example": 10
+        },
+        "tipo_residuo": {
+          "type": "number",
+          "example": 10
+        },
+        "valor": {
+          "type": "number",
+          "example": 10
+        }
+      },
+      "required": [
+        "id",
+        "peso_em_kg",
+        "tipo_residuo",
+        "valor"
+      ]
+    },
+    "dashboard": {
+      "type": "object",
+      "properties": {
+        "inicio": {
+          "type": "string",
+          "example": "2023-12-03"
+        },
+        "fim": {
+          "type": "string",
+          "example": "2023-12-06"
+        },
+        "data": {
+          "type": "string",
+          "example": "True"
+        }
+      },
+      "required": [
+        "inicio",
+        "fim",
+        "data"
+      ]
+    },
+    "delete_residuo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 10
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "Descarte_residuo": {
+      "type": "object",
+      "properties": {
+        "telefone": {
+          "type": "string",
+          "example": "92922222222"
+        },
+        "papel": {
+          "type": "number",
+          "example": 1
+        },
+        "metal": {
+          "type": "number",
+          "example": 1
+        },
+        "plastico": {
+          "type": "number",
+          "example": 1
+        },
+        "vidro": {
+          "type": "number",
+          "example": 1
+        },
+        "organico": {
+          "type": "number",
+          "example": 1
+        },
+        "nao_reciclavel": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "telefone",
+        "papel",
+        "metal",
+        "plastico",
+        "vidro",
+        "organico",
+        "nao_reciclavel"
+      ]
+    },
+    "gravar_Quizz": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "emerson"
+        },
+        "telefone": {
+          "type": "string",
+          "example": "92993727982"
+        },
+        "palpite": {
+          "type": "number",
+          "example": 356
+        }
+      },
+      "required": [
+        "nome",
+        "telefone",
+        "palpite"
+      ]
+    }
+  }
+}
