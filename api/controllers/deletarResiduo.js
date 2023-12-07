@@ -1,4 +1,4 @@
-const db = require('../../db/models/index');
+const db = require("../../db/models/index");
 const tarefaModel = require("../../db/tarefaModels");
 
 exports.DeletarResiduo = async (req, res) => {
@@ -13,14 +13,14 @@ exports.DeletarResiduo = async (req, res) => {
             schema: {$ref: "#/definitions/delete_residuo"}
         }]
      */
-  try{
+  try {
     const id = req.body.id;
     const user = await db.coleta_peso.destroy({
       where: {
         id: id,
       },
     });
-    if (!user){
+    if (!user) {
       return res.status(404).json(
         (data = {
           message: "dados nao encontrado!",
@@ -34,13 +34,12 @@ exports.DeletarResiduo = async (req, res) => {
         code: 500,
       })
     );
-  }catch{
+  } catch {
     return res.status(404).json(
       (data = {
         message: "erro, verifique servidor!",
         code: 404,
       })
     );
-
   }
 };

@@ -6,21 +6,10 @@ const swaggerFile = require("./api/swagger_output.json");
 const router = require("./api/routers");
 
 const cors = require("cors");
-const whitelist = ["http://localhost:8080"];
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("not allowed by cors"));
-    }
-  },
-  credentials: true,
-};
 
 app.use(express.json()); //aceitar arquivo json
 app.use(express.urlencoded({ extended: true }));
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(router);
 
