@@ -14,14 +14,30 @@ exports.DescarteResiduo = async (req, res) => {
      */
   try {
     const dados = req.body;
-    const cadastrar = await db.descarte.create(dados);
+    const verTelefone = await db.quiz.findOne({
+      attributes: ["telefone"],
+      where: {
+        telefone: dados.telefone,
+      },
+    });
+    if (!verTelefone) {
+      const descarte = await db.descarte.create(dados);
+      res.status(200).json(
+        data={
+          mensagem:'Obrigado por ajuda o planeta',
+          code:200
+        }
+      );
+    }else{
+      const descarte = await db.descarte.create(dados);
+      res.status(201).json(
+        data={
+          mensagem:'Obrigado por ajuda o planeta. Porem, ja possui palpite no telefone cadastrado',
+          code:201
+        }
+      );
+    }
 
-    res.status(200).json(
-      data={
-        mensagem:'Obrigado '+dados.nome+' por ajuda o planeta',
-        code:200
-      }
-    );
   } catch (error) {
     console.log(error)
     res.status(500).json(data={

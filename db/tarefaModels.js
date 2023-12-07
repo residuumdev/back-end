@@ -35,9 +35,6 @@ exports.UpDate = async (dados) => {
     if (dados.peso_em_kg) {
       update.peso_em_kg = dados.peso_em_kg;
     }
-    if (dados.valor) {
-      update.valor = dados.valor;
-    }
     if (dados.tipo_residuo) {
       update.tipo_residuo = dados.tipo_residuo;
     }else{
