@@ -30,7 +30,7 @@ module.exports = {
       nao_reciclavel: {
         type: Sequelize.INTEGER
       },
-      eletronico: {
+       eletronico: {
         type: Sequelize.INTEGER
       },
       createdAt: {

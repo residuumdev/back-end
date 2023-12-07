@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     organico: DataTypes.INTEGER,
     nao_reciclavel: DataTypes.INTEGER,
     eletronico: DataTypes.INTEGER,
+    nao_reciclavel: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'descarte',
