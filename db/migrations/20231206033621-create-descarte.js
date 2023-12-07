@@ -9,16 +9,28 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nome: {
-        type: Sequelize.STRING
-      },
       telefone: {
         type: Sequelize.STRING
       },
-      tipo_residuo: {
-        type: Sequelize.STRING
+      papel: {
+        type: Sequelize.INTEGER
       },
-      palpite: {
+      metal: {
+        type: Sequelize.INTEGER
+      },
+      plastico: {
+        type: Sequelize.INTEGER
+      },
+      vidro: {
+        type: Sequelize.INTEGER
+      },
+      organico: {
+        type: Sequelize.INTEGER
+      },
+      nao_reciclavel: {
+        type: Sequelize.INTEGER
+      },
+      eletronico: {
         type: Sequelize.INTEGER
       },
       createdAt: {

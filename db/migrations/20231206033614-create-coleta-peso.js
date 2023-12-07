@@ -12,12 +12,6 @@ module.exports = {
       peso_em_kg: {
         type: Sequelize.FLOAT
       },
-      valor: {
-        type: Sequelize.FLOAT
-      },
-      data_coleta: {
-        type: Sequelize.DATE
-      },
       tipo_residuo: {
         type: Sequelize.STRING
       },

@@ -14,10 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   descarte.init({
-    nome: DataTypes.STRING,
     telefone: DataTypes.STRING,
-    tipo_residuo: DataTypes.STRING,
-    palpite: DataTypes.INTEGER
+    papel: DataTypes.INTEGER,
+    metal: DataTypes.INTEGER,
+    plastico: DataTypes.INTEGER,
+    vidro: DataTypes.INTEGER,
+    organico: DataTypes.INTEGER,
+    nao_reciclavel: DataTypes.INTEGER,
+    eletronico: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'descarte',
